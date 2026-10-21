@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, interactive-widget=resizes-content">
   <title>Silver Zen</title>
   <style>
 :root {
@@ -3028,6 +3028,52 @@ body.high-contrast .daily-garden-card { background:#102218 !important; border:2p
 @media(max-width:600px){.welcome-title{font-size:38px !important;}.welcome-section{margin-bottom:24px;}.daily-garden-card{padding:24px 21px !important;}.daily-garden-title{font-size:34px !important;}.daily-garden-desc{font-size:18px !important;}.mode-list{grid-template-columns:1fr;}.mode-info{padding-right:92px;}.btn-mode{min-height:145px !important;align-items:center !important;}.btn-mode::before{top:31px;bottom:auto;right:24px;width:44px;height:54px;font-size:33px;}.btn-mode::after{top:57px;bottom:auto;right:61px;width:44px;height:54px;font-size:28px;}.mode-name{font-size:25px !important;}.shelf-title{font-size:28px !important;}#garden-container{height:150px !important;}.community-entry-title{font-size:25px !important;}}
 @media(min-width:601px) and (max-width:900px){html .mode-list .btn-mode{min-height:210px !important;}}
 
+/* A bounded play surface; the action row never overlays question content. */
+#game-feedback-summary,#btn-explanation { display:none !important; }
+@media (max-width:900px), (max-height:500px) and (max-width:1100px) {
+ html body.in-game #app-shell { height:100vh !important; height:var(--play-viewport-height,100dvh) !important; min-height:0 !important; flex-direction:column !important; }
+ html body.in-game .sidebar-nav { display:none !important; }
+ html body.in-game .sidebar-nav.mobile-open { display:flex !important; }
+ html body.in-game .mobile-header { display:flex !important; flex:0 0 auto; justify-content:space-between; align-items:center; position:relative !important; top:auto; height:52px; min-height:52px !important; padding:2px 12px !important; box-sizing:border-box; }
+ html body.in-game .mobile-header .mobile-title { font-size:19px !important; line-height:1 !important; }
+ html body.in-game .mobile-menu-btn,html body.in-game .mobile-xp-btn { min-height:48px !important; height:48px !important; padding:4px 10px !important; font-size:14px !important; }
+ html body.in-game #scene-container { flex:1 1 auto !important; height:auto !important; min-height:0 !important; overflow:hidden !important; padding:8px !important; margin:0 auto !important; width:100%; max-width:900px; }
+ html body.in-game #scene-game:not(.hidden) { display:flex; height:100%; min-height:0; }
+ html body.in-game #game-card { display:flex !important; flex-direction:column; flex:1 1 auto; min-height:0; height:100%; width:100%; max-width:none; margin:0 !important; padding:12px 14px !important; border-radius:18px !important; box-sizing:border-box; }
+ html body.in-game .game-header { flex:0 0 auto; margin:0 0 12px !important; padding:0 0 9px !important; min-height:28px; align-items:center; gap:10px; }
+ html body.in-game .game-mode-name { font-size:18px !important; line-height:1.15 !important; margin:0 !important; font-weight:400; }
+ html body.in-game .game-step-counter { font-size:12px !important; line-height:1.2; padding:5px 9px !important; }
+ html body.in-game #game-body { flex:1 1 auto; min-height:0; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; scrollbar-width:thin; padding:0 3px 6px 0 !important; scroll-padding:8px; }
+ html body.in-game #game-body > h2 { margin:0 0 14px !important; font-size:1.4375rem !important; line-height:1.18 !important; letter-spacing:-.02em; text-wrap:pretty; }
+ html body.in-game .answer-grid { margin:0 !important; gap:8px !important; grid-template-columns:minmax(0,1fr); }
+ html body.in-game button.trivia-option { min-height:48px !important; padding:9px 11px !important; margin:0 !important; gap:10px !important; font-size:1.0625rem !important; line-height:1.3; border-radius:12px !important; box-shadow:none !important; }
+ html body.in-game .answer-letter { width:26px; height:26px; flex-basis:26px; font-size:12px; }
+ html body.in-game #game-body .explanation:not(.is-expanded) { display:none !important; }
+ html body.in-game #game-body .explanation.is-expanded { display:block !important; padding:12px !important; margin:12px 0 0 !important; font-size:1rem !important; line-height:1.45; border-radius:12px; }
+ html body.in-game #game-body .explanation > strong { font-size:18px !important; }
+ html body.in-game #game-body .explanation p { font-size:1rem !important; margin:6px 0 0 !important; line-height:1.45 !important; }
+ html body.in-game .game-footer { position:static !important; flex:0 0 auto; display:grid !important; grid-template-columns:minmax(0,1fr) auto auto; gap:8px !important; margin:8px 0 0 !important; padding:9px 0 max(2px,env(safe-area-inset-bottom)) !important; border-top:1px solid #d8ddcf; background:inherit; }
+ html body.in-game #game-feedback-summary:not(:empty) { display:block !important; grid-column:1 / -1; font-size:1rem; font-weight:600; line-height:1.3; color:#24452e; overflow-wrap:anywhere; }
+ html body.in-game #btn-next,html body.in-game #btn-hint { grid-column:1; width:100%; }
+ html body.in-game #btn-explanation:not(.hidden) { display:inline-flex !important; justify-content:center; align-items:center; grid-column:2; min-width:52px; }
+ html body.in-game #btn-exit { grid-column:3; }
+ html body.in-game .game-footer button { min-height:48px !important; padding:9px 12px !important; font-size:1rem !important; line-height:1.2; border-radius:12px !important; }
+ html body.in-game .word-clue { font-size:1.0625rem !important; line-height:1.4; margin:0 0 8px; }
+ html body.in-game .word-display { padding:10px 0 !important; gap:6px !important; }
+ html body.in-game .word-answer-form { gap:8px; margin-top:8px; }
+ html body.in-game .word-answer-form input { padding:10px 12px; min-height:48px; font-size:1.125rem; }
+ html body.in-game .word-answer-form button { min-height:48px !important; }
+ html body.in-game .word-feedback { font-size:1rem; margin:8px 0 0; min-height:0; }
+ html body.in-game .memory-grid { margin:12px auto !important; gap:8px !important; }
+ html body.in-game .round-result { padding:12px 4px !important; }
+ html body.in-game .result-flower { font-size:48px; }
+ html body.in-game .round-result > p:not(.eyebrow) { font-size:1.0625rem; }
+ html body.large-text.in-game #game-body > h2 { font-size:1.75rem !important; }
+ html body.large-text.in-game button.trivia-option { font-size:1.25rem !important; min-height:56px !important; }
+ html body.large-text.in-game .game-footer button { font-size:1.125rem !important; min-height:56px !important; }
+ html body.high-contrast.in-game #game-feedback-summary { color:#111 !important; }
+}
+
 </style>
 </head>
 <body>
@@ -6015,6 +6061,45 @@ Object.assign(ENGINE, {
   });
   // Each new memory round must permit exactly one completion reward.
   const start=E.startMode;E.startMode=function(mode){this.state.memoryRewarded=false;return start.call(this,mode);};
+})();
+
+/* Compact active play: actions remain in flow, outside the scrolling question. */
+(function () {
+ 'use strict';
+ const E=window.ENGINE,$=id=>document.getElementById(id);
+ const mobile=()=>window.matchMedia?.('(max-width:900px), (max-height:500px) and (max-width:1100px)').matches;
+ const render=E.renderStep,exit=E.exitToHome,community=E.showCommunityHome,result=E.showRoundResult;
+ E.updatePlayViewport=function(){
+  const viewport=window.visualViewport;
+  if(viewport&&viewport.scale===1)document.documentElement.style.setProperty('--play-viewport-height',Math.floor(viewport.height)+'px');
+  else document.documentElement.style.removeProperty('--play-viewport-height');
+ };
+ E.updatePlayActions=function(){
+  const footer=document.querySelector('.game-footer');if(!footer)return;
+  let summary=$('game-feedback-summary');
+  if(!summary){summary=document.createElement('div');summary.id='game-feedback-summary';summary.setAttribute('role','status');summary.setAttribute('aria-live','polite');footer.prepend(summary);}
+  let why=$('btn-explanation');
+  if(!why){why=document.createElement('button');why.id='btn-explanation';why.type='button';why.className='btn-secondary';why.textContent='Why?';why.setAttribute('aria-controls','game-explanation');footer.insertBefore(why,$('btn-exit'));}
+  const kind=this.state.activeMode==='daily'?this.state.dailyChallenge.currentMode:this.state.activeMode;
+  const item=this.state.roundDone?null:this.getCurrentItem();
+  summary.textContent=item?.answered?(kind==='trivia'?(item.lastCorrect?'Correct — ':'Answer — ')+item.a[item.c]:kind==='word'?'Found — '+item.target:''):'';
+  const explanation=document.querySelector('#game-body .explanation');
+  if(explanation)explanation.id='game-explanation';
+  why.classList.toggle('hidden',!explanation||!item?.answered);
+  why.setAttribute('aria-expanded',String(!!explanation?.classList.contains('is-expanded')));
+  why.onclick=()=>{if(!explanation)return;const open=!explanation.classList.contains('is-expanded');explanation.classList.toggle('is-expanded',open);why.setAttribute('aria-expanded',String(open));if(open)explanation.scrollIntoView?.({block:'nearest',behavior:'auto'});};
+  if(mobile()&&!this.state.roundDone&&item?.answered)$('btn-next').textContent=this.state.activeMode==='daily'&&this.state.step===2?'Finish →':'Next →';
+ };
+ E.renderStep=function(){
+  const body=$('game-body'),scroll=body?.scrollTop||0;
+  document.body.classList.add('in-game');this.updatePlayViewport();render.call(this);this.updatePlayActions();
+  if(body)body.scrollTop=this.getCurrentItem()?.answered?scroll:0;
+ };
+ E.showRoundResult=function(){document.body.classList.add('in-game');result.call(this);this.updatePlayActions();};
+ E.exitToHome=function(){document.body.classList.remove('in-game');exit.call(this);};
+ E.showCommunityHome=function(){document.body.classList.remove('in-game');community.call(this);};
+ window.addEventListener('resize',()=>{E.updatePlayViewport();E.updatePlayActions();});
+ window.visualViewport?.addEventListener('resize',()=>E.updatePlayViewport());
 })();
 
 </script>
